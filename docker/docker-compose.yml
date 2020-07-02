@@ -1,0 +1,170 @@
+# vHoney Image Builder (use only for building docker images)
+version: '2.3'
+
+services:
+
+##################
+#### Honeypots
+##################
+
+# Adbhoney service
+  adbhoney:
+    build: adbhoney/.
+    image: "vhoney/adbhoney:2.0"
+
+# Ciscoasa service
+  ciscoasa:
+    build: ciscoasa/.
+    image: "vhoney/ciscoasa:2.0"
+
+# CitrixHoneypot service
+  citrixhoneypot:
+    build: citrixhoneypot/.
+    image: "vhoney/citrixhoneypot:2.0"
+
+# Conpot IEC104 service
+  conpot_IEC104:
+    build: conpot/.
+    image: "vhoney/conpot:2.0"
+
+# Cowrie service
+  cowrie:
+    build: cowrie/.
+    image: "vhoney/cowrie:2.0"
+
+# Dicompot service
+  dicompot:
+    build: dicompot/.
+    image: "vhoney/dicompot:2.0"
+
+# Dionaea service
+  dionaea:
+    build: dionaea/.
+    image: "vhoney/dionaea:2.0"
+
+# ElasticPot service
+  elasticpot:
+    build: elasticpot/.
+    image: "vhoney/elasticpot:2.0"
+
+# Glutton service
+  glutton:
+    build: glutton/.
+    image: "vhoney/glutton:2.0"
+
+# Heralding service
+  heralding:
+    build: heralding/.
+    image: "vhoney/heralding:2.0"
+
+# HoneyPy service
+  honeypy:
+    build: honeypy/.
+    image: "vhoney/honeypy:2.0"
+
+# Honeytrap service
+  honeytrap:
+    build: honeytrap/.
+    image: "vhoney/honeytrap:2.0"
+
+# Mailoney service
+  mailoney:
+    build: mailoney/.
+    image: "vhoney/mailoney:2.0"
+
+# Medpot service
+  medpot:
+    build: medpot/.
+    image: "vhoney/medpot:2.0"
+
+# Rdpy service
+  rdpy:
+    build: rdpy/.
+    image: "vhoney/rdpy:2.0"
+
+#### Snare / Tanner
+## Tanner Redis Service
+  tanner_redis:
+    build: tanner/redis/.
+    image: "vhoney/redis:2.0"
+
+## PHP Sandbox service
+  tanner_phpox:
+    build: tanner/phpox/.
+    image: "vhoney/phpox:2.0"
+
+## Tanner API Service
+  tanner_api:
+    build: tanner/tanner/.
+    image: "vhoney/tanner:2.0"
+
+## Snare Service
+  snare:
+    build: tanner/snare/.
+    image: "vhoney/snare:2.0"
+
+
+##################
+#### NSM
+##################
+
+# Fatt service
+  fatt:
+    build: fatt/.
+    image: "vhoney/fatt:2.0"
+
+# P0f service
+  p0f:
+    build: p0f/.
+    image: "vhoney/p0f:2.0"
+
+# Suricata service
+  suricata:
+    build: suricata/.
+    image: "vhoney/suricata:2.0"
+
+
+##################
+#### Tools
+##################
+
+# Cyberchef service
+  cyberchef:
+    build: cyberchef/.
+    image: "vhoney/cyberchef:2.0"
+
+#### ELK
+## Elasticsearch service
+  elasticsearch:
+    build: elk/elasticsearch/.
+    image: "vhoney/elasticsearch:2.0"
+
+## Kibana service
+  kibana:
+    build: elk/kibana/.
+    image: "vhoney/kibana:2.0"
+
+## Logstash service
+  logstash:
+    build: elk/logstash/.
+    image: "vhoney/logstash:2.0"
+
+## Elasticsearch-head service
+  head:
+    build: elk/head/.
+    image: "vhoney/head:2.0"
+
+# Ewsposter service
+  ewsposter:
+    build: ews/.
+    image: "vhoney/ewsposter:2.0"
+
+# Nginx service
+  nginx:
+    build: heimdall/.
+    image: "vhoney/nginx:2.0"
+
+# Spiderfoot service
+  spiderfoot:
+    build: spiderfoot/.
+    image: "vhoney/spiderfoot:2.0"

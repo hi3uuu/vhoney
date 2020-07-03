@@ -272,37 +272,6 @@ cp vhoney.conf.dist vhoney.conf
 
 The installer will start automatically and guide you through the install process.
 
-<a name="cloud"></a>
-## Cloud Deployments
-Located in the [`cloud`](cloud) folder.  
-Currently there are examples with Ansible & Terraform.  
-If you would like to contribute, you can add other cloud deployments like Chef or Puppet or extend current methods with other cloud providers.
-
-*Please note*: Cloud providers usually offer adjusted Debian OS images, which might not be compatible with vHoney. There is no cloud provider support provided of any kind.
-
-<a name="ansible"></a>
-### Ansible Deployment
-You can find an [Ansible](https://www.ansible.com/) based vHoney deployment in the [`cloud/ansible`](cloud/ansible) folder.  
-The Playbook in the [`cloud/ansible/openstack`](cloud/ansible/openstack) folder is reusable for all **OpenStack** clouds out of the box.
-
-It first creates all resources (security group, network, subnet, router), deploys a new server and then installs and configures vHoney.
-
-You can have a look at the Playbook and easily adapt the deploy role for other [cloud providers](https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules.html).
-
-*Please note*: Cloud providers usually offer adjusted Debian OS images, which might not be compatible with vHoney. There is no cloud provider support provided of any kind.
-
-<a name="terraform"></a>
-### Terraform Configuration
-
-You can find [Terraform](https://www.terraform.io/) configuration in the [`cloud/terraform`](cloud/terraform) folder.
-
-This can be used to launch a virtual machine, bootstrap any dependencies and install vHoney in a single step.
-
-Configuration for **Amazon Web Services** (AWS) and **Open Telekom Cloud** (OTC) is currently included.  
-This can easily be extended to support other [Terraform providers](https://www.terraform.io/docs/providers/index.html).
-
-*Please note*: Cloud providers usually offer adjusted Debian OS images, which might not be compatible with vHoney. There is no cloud provider support provided of any kind.
-
 <a name="firstrun"></a>
 ## First Run
 The installation requires very little interaction, only a locale and keyboard setting have to be answered for the basic linux installation. While the system reboots maintain the active internet connection. The vHoney installer will start and ask you for an installation type, password for the **tsec** user and credentials for a **web user**. Everything else will be configured automatically. All docker images and other componenents will be downloaded. Depending on your network connection and the chosen installation type, the installation may take some time. With 250Mbit down / 40Mbit up the installation is usually finished within 15-30 minutes.

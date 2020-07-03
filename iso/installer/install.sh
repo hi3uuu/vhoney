@@ -135,12 +135,12 @@ maxretry = 5
 [nginx-http-auth]
 enabled  = true
 filter   = nginx-http-auth
-port     = 64297
+port     = 65535
 logpath  = /data/nginx/log/error.log
 
 [pam-generic]
 enabled = true
-port    = 64294
+port    = 64449
 filter  = pam-generic
 logpath = /var/log/auth.log
 
@@ -156,7 +156,7 @@ MACAddressPolicy=none
 "
 myCOCKPIT_SOCKET="[Socket]
 ListenStream=
-ListenStream=64294
+ListenStream=64449
 "
 mySSHPORT="
 Port 64444
@@ -706,6 +706,7 @@ if ! [ "$myVHONEY_DEPLOYMENT_TYPE" == "iso" ];
   then
     fuBANNER "Cloning vHoney"
     git clone https://github.com/hi3uuu/vhoney /opt/vhoney
+    chmod -R 777 /opt/vhoney
 fi
 
 # Let's create the vHoney user

@@ -585,27 +585,27 @@ services:
     image: "vhoney/head:2.0"
     read_only: true
 
-# Ewsposter service
-  ewsposter:
-    container_name: ewsposter
-    restart: always
-    networks:
-     - ewsposter_local
-    environment:
-     - EWS_HPFEEDS_ENABLE=false
-     - EWS_HPFEEDS_HOST=host
-     - EWS_HPFEEDS_PORT=port
-     - EWS_HPFEEDS_CHANNELS=channels
-     - EWS_HPFEEDS_IDENT=user
-     - EWS_HPFEEDS_SECRET=secret
-     - EWS_HPFEEDS_TLSCERT=false
-     - EWS_HPFEEDS_FORMAT=json
-    env_file:
-     - /opt/vhoney/etc/compose/elk_environment
-    image: "vhoney/ewsposter:2.0"
-    volumes:
-     - /data:/data
-     - /data/ews/conf/ews.ip:/opt/ewsposter/ews.ip
+# # Ewsposter service
+#   ewsposter:
+#     container_name: ewsposter
+#     restart: always
+#     networks:
+#      - ewsposter_local
+#     environment:
+#      - EWS_HPFEEDS_ENABLE=false
+#      - EWS_HPFEEDS_HOST=host
+#      - EWS_HPFEEDS_PORT=port
+#      - EWS_HPFEEDS_CHANNELS=channels
+#      - EWS_HPFEEDS_IDENT=user
+#      - EWS_HPFEEDS_SECRET=secret
+#      - EWS_HPFEEDS_TLSCERT=false
+#      - EWS_HPFEEDS_FORMAT=json
+#     env_file:
+#      - /opt/vhoney/etc/compose/elk_environment
+#     image: "vhoney/ewsposter:2.0"
+#     volumes:
+#      - /data:/data
+#      - /data/ews/conf/ews.ip:/opt/ewsposter/ews.ip
 
 # Nginx service
   nginx:

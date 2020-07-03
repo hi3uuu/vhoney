@@ -24,7 +24,7 @@ services:
      - /var/lib/nginx/html/storage/framework/views:uid=100,gid=82
     network_mode: "host"
     ports:
-     - "65535:64297"
+     - "65535:65535"
      - "127.0.0.1:64304:64304"
     image: "vhoney/nginx:2.0"
     read_only: true

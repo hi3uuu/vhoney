@@ -146,7 +146,7 @@ logpath = /var/log/auth.log
 
 [sshd]
 enabled = true
-port    = 64295
+port    = 64444
 filter  = sshd
 logpath = /var/log/auth.log
 "
@@ -159,7 +159,7 @@ ListenStream=
 ListenStream=64294
 "
 mySSHPORT="
-Port 64295
+Port 64444
 "
 myRANDOM_HOUR=$(shuf -i 2-22 -n 1)
 myRANDOM_MINUTE=$(shuf -i 0-59 -n 1)
@@ -900,5 +900,5 @@ if [ "$myVHONEY_DEPLOYMENT_TYPE" == "auto" ];
   else
     fuBANNER "Rebooting ..."
     sleep 2
-    reboot
+    systemctl reboot
 fi

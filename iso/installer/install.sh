@@ -536,10 +536,10 @@ if [ "$myVHONEY_DEPLOYMENT_TYPE" == "iso" ] || [ "$myVHONEY_DEPLOYMENT_TYPE" == 
     "MEDICAL" "Dicompot, Medpot, ELK, NSM & Tools" 3>&1 1>&2 2>&3 3>&-)
 fi
 
-# Let's ask for a secure tsec password if installation type is iso
+# Let's ask for a secure vhoney password if installation type is iso
 if [ "$myVHONEY_DEPLOYMENT_TYPE" == "iso" ];
   then
-    myCONF_VHONEY_USER="tsec"
+    myCONF_VHONEY_USER="vhoney"
     myPASS1="pass1"
     myPASS2="pass2"
     mySECURE="0"
@@ -548,11 +548,11 @@ if [ "$myVHONEY_DEPLOYMENT_TYPE" == "iso" ];
         while [ "$myPASS1" == "pass1"  ] || [ "$myPASS1" == "" ]
           do
             myPASS1=$(dialog --keep-window --insecure --backtitle "$myBACKTITLE" \
-                             --title "[ Enter password for console user (tsec) ]" \
+                             --title "[ Enter password for console user (vhoney) ]" \
                              --passwordbox "\nPassword" 9 60 3>&1 1>&2 2>&3 3>&-)
           done
             myPASS2=$(dialog --keep-window --insecure --backtitle "$myBACKTITLE" \
-                             --title "[ Repeat password for console user (tsec) ]" \
+                             --title "[ Repeat password for console user (vhoney) ]" \
                              --passwordbox "\nPassword" 9 60 3>&1 1>&2 2>&3 3>&-)
         if [ "$myPASS1" != "$myPASS2" ];
           then
@@ -588,11 +588,11 @@ if [ "$myVHONEY_DEPLOYMENT_TYPE" == "iso" ] || [ "$myVHONEY_DEPLOYMENT_TYPE" == 
     mySECURE="0"
     while [ 1 != 2 ]
       do
-        myCONF_WEB_USER=$(dialog --keep-window --backtitle "$myBACKTITLE" --title "[ Enter your web user name ]" --inputbox "\nUsername (tsec not allowed)" 9 50 3>&1 1>&2 2>&3 3>&-)
+        myCONF_WEB_USER=$(dialog --keep-window --backtitle "$myBACKTITLE" --title "[ Enter your web user name ]" --inputbox "\nUsername (vhoney not allowed)" 9 50 3>&1 1>&2 2>&3 3>&-)
         myCONF_WEB_USER=$(echo $myCONF_WEB_USER | tr -cd "[:alnum:]_.-")
         dialog --keep-window --backtitle "$myBACKTITLE" --title "[ Your username is ]" --yesno "\n$myCONF_WEB_USER" 7 50
         myOK=$?
-        if [ "$myOK" = "0" ] && [ "$myCONF_WEB_USER" != "tsec" ] && [ "$myCONF_WEB_USER" != "" ];
+        if [ "$myOK" = "0" ] && [ "$myCONF_WEB_USER" != "vhoney" ] && [ "$myCONF_WEB_USER" != "" ];
           then
             break
         fi
@@ -820,7 +820,7 @@ mkdir -vp /data/adbhoney/{downloads,log} \
          /data/suricata/log \
          /data/tanner/{log,files} \
          /data/p0f/log \
-         /home/tsec/.ssh/
+         /home/vhoney/.ssh/
 touch /data/spiderfoot/spiderfoot.db
 touch /data/nginx/log/error.log
 
@@ -835,8 +835,8 @@ fuBANNER "Permissions"
 chmod 770 -R /data
 if [ "$myVHONEY_DEPLOYMENT_TYPE" == "iso" ];
   then
-    usermod -a -G vhoney tsec
-    chown tsec:tsec -R /home/tsec/.ssh
+    usermod -a -G vhoney vhoney
+    chown vhoney:vhoney -R /home/vhoney/.ssh
   else
     usermod -a -G vhoney $(who am i | awk '{ print $1 }')
 fi

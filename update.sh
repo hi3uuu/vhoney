@@ -10,7 +10,7 @@ myBLUE="[0;34m"
 
 # Check for existing vhoney.yml
 function fuCONFIGCHECK () {
-  echo "### Checking for T-Pot configuration file ..."
+  echo "### Checking for vHoney configuration file ..."
   if ! [ -L $myCONFIGFILE ];
     then
       echo -n "###### $myBLUE$myCONFIGFILE$myWHITE "
@@ -81,14 +81,14 @@ echo
 
 # Let's check for version
 function fuCHECK_VERSION () {
-local myMINVERSION="19.03.0"
-local myMASTERVERSION="20.06.0"
+local myMINVERSION="1.0"
+local myMASTERVERSION="2.0"
 echo
 echo "### Checking for Release ID"
 myRELEASE=$(lsb_release -i | grep Debian -c)
 if [ "$myRELEASE" == "0" ] 
   then
-    echo "###### This version of T-Pot cannot be upgraded automatically. Please run a fresh install.$myWHITE"" [ $myRED""NOT OK""$myWHITE ]"
+    echo "###### This version of vHoney cannot be upgraded automatically. Please run a fresh install.$myWHITE"" [ $myRED""NOT OK""$myWHITE ]"
     exit
 fi
 echo "### Checking for version tag ..."
@@ -110,15 +110,15 @@ echo
 }
 
 
-# Stop T-Pot to avoid race conditions with running containers with regard to the current T-Pot config
-function fuSTOP_TPOT () {
-echo "### Need to stop T-Pot ..."
-echo -n "###### $myBLUE Now stopping T-Pot.$myWHITE "
+# Stop vHoney to avoid race conditions with running containers with regard to the current vHoney config
+function fuSTOP_VHONEY () {
+echo "### Need to stop vHoney ..."
+echo -n "###### $myBLUE Now stopping vHoney.$myWHITE "
 systemctl stop vhoney
 if [ $? -ne 0 ];
   then
     echo " [ $myRED""NOT OK""$myWHITE ]"
-    echo "###### $myBLUE""Could not stop T-Pot.""$myWHITE"" [ $myRED""NOT OK""$myWHITE ]"
+    echo "###### $myBLUE""Could not stop vHoney.""$myWHITE"" [ $myRED""NOT OK""$myWHITE ]"
     echo "Exiting.""$myWHITE"
     echo
     exit 1
@@ -170,8 +170,8 @@ fi
 
 # Let's load docker images in parallel
 function fuPULLIMAGES {
-local myTPOTCOMPOSE="/opt/vhoney/etc/vhoney.yml"
-for name in $(cat $myTPOTCOMPOSE | grep -v '#' | grep image | cut -d'"' -f2 | uniq)
+local myVHONEYCOMPOSE="/opt/vhoney/etc/vhoney.yml"
+for name in $(cat $myVHONEYCOMPOSE | grep -v '#' | grep image | cut -d'"' -f2 | uniq)
   do
     docker pull $name &
   done
@@ -211,18 +211,18 @@ apt-fast -y purge exim4-base mailutils pcp cockpit-pcp elasticsearch-curator
 apt-mark hold exim4-base mailutils pcp cockpit-pcp elasticsearch-curator
 echo
 
-echo "### Now replacing T-Pot related config files on host"
+echo "### Now replacing vHoney related config files on host"
 cp host/etc/systemd/* /etc/systemd/system/
 systemctl daemon-reload
 echo
 
 # Ensure some defaults
-echo "### Ensure some T-Pot defaults with regard to some folders, permissions and configs."
+echo "### Ensure some vHoney defaults with regard to some folders, permissions and configs."
 sed -i '/^port/Id' /etc/ssh/sshd_config
 echo "Port 64295" >> /etc/ssh/sshd_config
 echo
 
-### Ensure creation of T-Pot related folders, just in case
+### Ensure creation of vHoney related folders, just in case
 mkdir -vp /data/adbhoney/{downloads,log} \
          /data/ciscoasa/log \
          /data/conpot/log \
@@ -260,7 +260,7 @@ echo "### Now pulling latest docker images"
 echo "######$myBLUE This might take a while, please be patient!$myWHITE"
 fuPULLIMAGES 2>&1>/dev/null
 
-#fuREMOVEOLDIMAGES "1903"
+#fuREMOVEOLDIMAGES "1.0"
 echo "### If you made changes to vhoney.yml please ensure to add them again."
 echo "### We stored the previous version as backup in /root/."
 echo "### Some updates may need an import of the latest Kibana objects as well."
@@ -304,7 +304,7 @@ fi
 
 # Only run with command switch
 if [ "$1" != "-y" ]; then
-  echo "This script will update / upgrade all T-Pot related scripts, tools and packages to the latest versions."
+  echo "This script will update / upgrade all vHoney related scripts, tools and packages to the latest versions."
   echo "A backup of /opt/vhoney will be written to /root. If you are unsure, you should save your work."
   echo "This is a beta feature and only recommended for experienced users."
   echo "If you understand the involved risks feel free to run this script with the '-y' switch."
@@ -315,7 +315,7 @@ fi
 fuCHECK_VERSION
 fuCONFIGCHECK
 fuCHECKINET "https://index.docker.io https://github.com https://pypi.python.org https://debian.org"
-fuSTOP_TPOT
+fuSTOP_VHONEY
 fuBACKUP
 fuSELFUPDATE "$0" "$@"
 fuUPDATER

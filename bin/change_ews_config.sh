@@ -4,8 +4,6 @@ echo """
 
 ###############################
 # vHoney DTAG Data Submission #
-# Contact:                    #
-# cert@telekom.de             # 
 ###############################
 """
 

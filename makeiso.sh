@@ -154,7 +154,7 @@ done
 # Let's ask the user for a ntp server ...
 while true;
 do
-  dialog --backtitle "$myBACKTITLE" --title "[ NTP server? ]" --yesno "\nDo you want to configure a ntp server?" 7 50
+  dialog --backtitle "$myBACKTITLE" --title "[ NTP server? ]" --yesno "\nDo you want to configure a NTP server?" 7 50
   myCONF_NTP_USE=$?
   if [ "$myCONF_NTP_USE" = "0" ]
     then
@@ -244,7 +244,7 @@ cd ..
 
 # Let's create the new .iso
 cd $myVHONEYDIR
-xorrisofs -gui -D -r -V "vHoney" -cache-inodes -J -l -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../$myVHONEYISO ../$myVHONEYDIR 2>&1 | awk '{print $1+0} fflush()' | cut -f1 -d"." | dialog --backtitle "$myBACKTITLE" --title "[ Building vHoney .iso ... ]" --gauge "" 5 70 0
+xorrisofs -gui -D -r -V "vHoney" -cache-inodes -J -l -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../$myVHONEYISO ../$myVHONEYDIR 2>&1 | awk '{print $1+0} fflush()' | cut -f1 -d"." | dialog --backtitle "$myBACKTITLE" --title "[ Building vHoney.iso ... ]" --gauge "" 5 70 0
 echo 100 | dialog --backtitle "$myBACKTITLE" --title "[ Building vHoney .iso ... Done! ]" --gauge "" 5 70
 cd ..
 isohybrid $myVHONEYISO

@@ -274,18 +274,18 @@ The installer will start automatically and guide you through the install process
 
 <a name="firstrun"></a>
 ## First Run
-The installation requires very little interaction, only a locale and keyboard setting have to be answered for the basic linux installation. While the system reboots maintain the active internet connection. The vHoney installer will start and ask you for an installation type, password for the **tsec** user and credentials for a **web user**. Everything else will be configured automatically. All docker images and other componenents will be downloaded. Depending on your network connection and the chosen installation type, the installation may take some time. With 250Mbit down / 40Mbit up the installation is usually finished within 15-30 minutes.
+The installation requires very little interaction, only a locale and keyboard setting have to be answered for the basic linux installation. While the system reboots maintain the active internet connection. The vHoney installer will start and ask you for an installation type, password for the **vhoney** user and credentials for a **web user**. Everything else will be configured automatically. All docker images and other componenents will be downloaded. Depending on your network connection and the chosen installation type, the installation may take some time. With 250Mbit down / 40Mbit up the installation is usually finished within 15-30 minutes.
 
 Once the installation is finished, the system will automatically reboot and you will be presented with the vHoney login screen. On the console you may login with:
 
-- user: **[tsec or user]** *you chose during one of the post install methods*
+- user: **[vhoney or user]** *you chose during one of the post install methods*
 - pass: **[password]** *you chose during the installation*
 
 All honeypot services are preconfigured and are starting automatically.
 
-You can login from your browser and access the Admin UI: `https://<your.ip>:64294` or via SSH to access the command line: `ssh -l tsec -p 64295 <your.ip>`
+You can login from your browser and access the Admin UI: `https://<your.ip>:64294` or via SSH to access the command line: `ssh -l vhoney -p 64295 <your.ip>`
 
-- user: **[tsec or user]** *you chose during one of the post install methods*
+- user: **[vhoney or user]** *you chose during one of the post install methods*
 - pass: **[password]** *you chose during the installation*
 
 You can also login from your browser and access the Web UI: `https://<your.ip>:64297`
@@ -340,7 +340,7 @@ By default, the SSH daemon allows access on **tcp/64295** with a user / password
 
 If you do not have a SSH client at hand and still want to access the machine via command line you can do so by accessing the Admin UI from `https://<your.ip>:64294`, enter
 
-- user: **[tsec or user]** *you chose during one of the post install methods*
+- user: **[vhoney or user]** *you chose during one of the post install methods*
 - pass: **[password]** *you chose during the installation*
 
 You can also add two factor authentication to Cockpit just by running `2fa.sh` on the command line.
@@ -386,24 +386,6 @@ If you run into any problems, a reboot may fix it :bowtie:
 
 If new versions of the components involved appear new docker images will be created and distributed. New images will be available from docker hub and downloaded automatically to vHoney and activated accordingly.  
 
-<a name="submission"></a>
-## Community Data Submission
-vHoney is provided in order to make it accessible to all interested in honeypots. By default, the captured data is submitted to a community backend. This community backend uses the data to feed [Sicherheitstacho](https://sicherheitstacho.eu).
-You may opt out of the submission by removing the `# Ewsposter service` from `/opt/vhoney/etc/vhoney.yml`:
-1. Stop vHoney services: `systemctl stop vhoney`
-2. Remove Ewsposter service: `vi /opt/vhoney/etc/vhoney.yml`
-3. Remove the following lines, save and exit vi (`:x!`):<br>
-```
-# Ewsposter service
-  ewsposter:
-    container_name: ewsposter
-    restart: always
-    networks:
-     - ewsposter_local
-    image: "vhoney/ewsposter:2.0"
-    volumes:
-     - /data:/data
-     - /data/ews/conf/ews.ip:/opt/ewsposter/ews.ip
 ```
 4. Start vHoney services: `systemctl start vhoney`
 
@@ -438,7 +420,6 @@ You are always invited to participate in development on our [GitHub](https://git
 - The software was designed with best effort security, not to be in stealth mode. Because then, we probably would not be able to provide those kind of honeypot services.
 - You install and you run within your responsibility. Choose your deployment wisely as a system compromise can never be ruled out.
 - Honeypots - by design - should not host any sensitive data. Make sure you don't add any.
-- By default, your data is submitted to [SecurityMeter](https://www.sicherheitstacho.eu/start/main). You can disable this in the config. But hey, wouldn't it be better to contribute to the community?
 
 <a name="faq"></a>
 # FAQ

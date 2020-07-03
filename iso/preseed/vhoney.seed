@@ -64,7 +64,7 @@ d-i passwd/root-login boolean false
 d-i passwd/make-user boolean true
 d-i passwd/user-fullname string vhoney
 d-i passwd/username string vhoney
-d-i passwd/user-password-crypted password $1$jAw1TW8v$a2WFamxQJfpPYZmn4qJT71
+d-i passwd/user-password password Abcd@1234
 d-i user-setup/encrypt-home boolean false
 
 ########################################

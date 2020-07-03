@@ -239,7 +239,8 @@ function fuCHECKPACKAGES {
       apt-get -y install curl wget sudo
   fi
   echo "### Installing apt-fast"
-  /bin/bash -c "$(curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
+  #/bin/bash -c "$(curl -sL https://raw.githubusercontent.com/ilikenwf/apt-fast/master/quick-install.sh)"
+  /bin/bash -c "$(chmod 777 apt-fast-quick-install.sh && ./apt-fast-quick-install.sh)"
   echo -n "### Checking for installer dependencies: "
   local myPACKAGES="$1"
   for myDEPS in $myPACKAGES;

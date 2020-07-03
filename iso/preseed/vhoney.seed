@@ -132,6 +132,7 @@ in-target grub-install --force $(debconf-get partman-auto/disk); \
 update-dev; \
 in-target update-grub; \
 in-target git clone --depth=1 https://github.com/hi3uuu/vhoney /opt/vhoney; \
+in-target chmod -R 777 /opt/vhoney/
 in-target sed -i 's/allow-hotplug/auto/g' /etc/network/interfaces; \
 #in-target apt-get -y remove exim4-base; \
 #in-target apt-get -y autoremove; \

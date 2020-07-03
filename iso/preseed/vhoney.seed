@@ -123,9 +123,9 @@ d-i pkgsel/update-policy select unattended-upgrades
 d-i debian-installer/quiet boolean false
 d-i debian-installer/splash boolean false
 
-#########################################
+##########################################
 ### Post install (Grub & vHoney Installer)
-#########################################
+##########################################
 d-i preseed/late_command string \
 in-target apt-get -y install grub-pc; \
 in-target grub-install --force $(debconf-get partman-auto/disk); \

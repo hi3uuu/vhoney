@@ -20,18 +20,18 @@ mySITES="https://hub.docker.com https://github.com https://pypi.python.org https
 myVHONEYCOMPOSE="/opt/vhoney/etc/vhoney.yml"
 myLSB_STABLE_SUPPORTED="stretch buster"
 myLSB_TESTING_SUPPORTED="stable"
-myREMOTESITES="https://hub.docker.com https://github.com https://pypi.python.org https://debian.org https://listbot.sicherheitstacho.eu"
+myREMOTESITES="https://hub.docker.com https://github.com https://pypi.python.org https://debian.org"
 myPREINSTALLPACKAGES="aria2 apache2-utils cracklib-runtime curl dialog figlet fuse grc libcrack2 libpq-dev lsb-release netselect-apt net-tools software-properties-common toilet"
 myINSTALLPACKAGES="aria2 apache2-utils apparmor apt-transport-https aufs-tools bash-completion build-essential ca-certificates cgroupfs-mount cockpit cockpit-docker console-setup console-setup-linux cracklib-runtime curl debconf-utils dialog dnsutils docker.io docker-compose ethtool fail2ban figlet genisoimage git glances grc haveged html2text htop iptables iw jq kbd libcrack2 libltdl7 libpam-google-authenticator man mosh multitail netselect-apt net-tools npm ntp openssh-server openssl pass pigz prips software-properties-common syslinux psmisc pv python3-pip toilet unattended-upgrades unzip vim wget wireless-tools wpasupplicant"
 myINFO="\
-###########################################
+############################################
 ### vHoney Installer for Debian (Stable) ###
-###########################################
+############################################
 
 Disclaimer:
 This script will install vHoney on this system.
 By running the script you know what you are doing:
-1. SSH will be reconfigured to tcp/64295.
+1. SSH will be reconfigured to tcp/64444.
 2. Please ensure other means of access to this system in case something goes wrong.
 3. At best this script will be executed on the console instead through a SSH session.
 

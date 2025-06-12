@@ -11,3 +11,4 @@ service_identity==18.1.0
 tftpy==0.8.0
 treq==20.4.1
 twisted==20.3.0
+requests>=2.32.4 # not directly required, pinned by Snyk to avoid a vulnerability

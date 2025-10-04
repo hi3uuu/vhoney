@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM alpine:3.18.12
 #
 # Get and install dependencies & packages
 RUN sed -i 's/dl-cdn/dl-2/g' /etc/apk/repositories && \

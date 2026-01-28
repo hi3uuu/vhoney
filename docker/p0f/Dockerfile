@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.23.3
 #
 # Add source
 ADD . /opt/p0f

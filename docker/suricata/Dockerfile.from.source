@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.23.3
 #
 # VARS
 ENV VER=5.0.2
